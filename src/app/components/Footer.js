@@ -7,13 +7,13 @@ export default function Footer() {
   return (
     <div className='bg-gray-300 flex flex-wrap justify-around  mt-20 p-16'>
         <div className=''> 
-            <div className='text-gray-400 text-sm'>
+            <div className='text-gray-500 text-sm'>
              <div className='mb-10'>info</div>
              <div>PRCING</div>
              <div>ABOUTS</div>
              <div>CONTACTS</div>
             </div>
-            <div className='text-gray-400 mt-10 text-sm'>
+            <div className='text-gray-500 mt-10 text-sm'>
              <div className='mb-10'>LANGUAGES</div>
              <div>ENG</div>
              <div>ESP</div>

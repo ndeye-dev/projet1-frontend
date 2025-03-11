@@ -37,11 +37,11 @@ export default function Home() {
 
         <div className="bg-gray-100 bg-opacity-40">
             <Nav />
-            <div className="text-sm space-y-1 mt-16 p-7">
+            <div className="text-sm space-y-1 mt-16 max-w-7xl mx-auto  p-6">
                 <div>NEW</div>
                 <div>WOMEN</div>
                 <div>KIDS</div>
-                <div className="text-black"><input className="bg-gray-400 p-2 w-72" placeholder="🔍        recherche" /></div>
+                <div className="text-black"><input className="bg-gray-300 p-2 w-72" placeholder="🔍        recherche" /></div>
             </div>
             <div className="max-w-7xl mx-auto  p-6">
 

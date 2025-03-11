@@ -48,14 +48,14 @@ export default function Nav() {
 
                     {/* Partie droite : Favoris, Panier, Profil */}
                     <div className="hidden md:flex space-x-4 items-center">
-                        <a href="favoris" className="text-gray-700 hover:text-blue-600"><FiHeart size={24} /></a>
-                        <a href="paniers" className="text-gray-700 hover:text-blue-600"><FiShoppingCart size={24} /></a>
+                        <a href="favoris" className="rounded-[20px] p-2 bg-black text-white text-gray-700 "><FiHeart size={24} /></a>
+                        <a href="paniers" className=" rounded-[20px] p-2 bg-black text-white text-gray-700 "><FiShoppingCart size={24} /></a>
 
                         {/* Dropdown Profil */}
                         <div className="relative">
                             <button
                                 onClick={() => setDropdownOpen(!dropdownOpen)}
-                                className="text-gray-700 hover:text-blue-600 focus:outline-none"
+                                className="rounded-[20px] p-2 bg-black text-white text-gray-700  focus:outline-none"
                             >
                                 <FiUser size={24} />
                             </button>
@@ -84,6 +84,7 @@ export default function Nav() {
             </div>
 
             {/* Menu mobile */}
+            {/* // */}
             {menuOpen && (
                 <div className="md:hidden bg-white shadow-lg absolute top-16 left-0 w-full">
                     <div className="flex flex-col items-center space-y-4 py-4">
@@ -91,14 +92,14 @@ export default function Nav() {
                         <Link href="/produits" className="text-gray-700 hover:text-blue-600 font-medium">Produits</Link>
                         <Link href="#" className="text-gray-700 hover:text-blue-600 font-medium">New</Link>
                         <div className="flex space-x-6">
-                        <a href="favoris" className="text-gray-700 hover:text-blue-600"><FiHeart size={24} /></a>
+                        <a href="favoris" className="text-gray-700 hover:text-blue-600 "><FiHeart size={24} /></a>
                         <a href="paniers" className="text-gray-700 hover:text-blue-600"><FiShoppingCart size={24} /></a>
 
                             {/* Dropdown Profil (mobile) */}
                             <div className="relative">
                                 <button
                                     onClick={() => setDropdownOpen(!dropdownOpen)}
-                                    className="text-gray-700 hover:text-blue-600 focus:outline-none"
+                                    className=" text-gray-700 hover:text-blue-600 focus:outline-none"
                                 >
                                     <FiUser size={24} />
                                 </button>

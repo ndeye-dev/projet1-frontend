@@ -58,7 +58,7 @@ export default function ProduitsPage() {
                         {/* Filtres par catégorie */}
                         <div className="flex gap-3 flex-wrap">
                             <button
-                                className={`px-4 py-2 rounded-md ${filtreCategorie === "" ? "bg-gray-600 text-white" : "bg-gray-200"}`}
+                                className={`px-4 py-2 rounded-md ${filtreCategorie === "" ? "bg-gray-300 text-white" : "bg-gray-200"}`}
                                 onClick={() => setFiltreCategorie("")}
                             >
                                 Tous
