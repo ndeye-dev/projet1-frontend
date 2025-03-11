@@ -28,7 +28,7 @@ export default function Inscription() {
     setMessage('');
 
     try {
-      const response = await fetch('https://backendclothstore.onrender.com/api/utilisateurs/inscription-utilisateur', {
+      const response = await fetch('https://backend-store-loy5.onrender.com/api/utilisateurs/inscription-utilisateur', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

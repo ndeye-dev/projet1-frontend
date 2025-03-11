@@ -27,7 +27,7 @@ export default function Connexion() {
     setMessage('');
 
     try {
-      const response = await fetch('https://backendclothstore.onrender.com/api/utilisateurs/connexion-utilisateur', {
+      const response = await fetch('https://backend-store-loy5.onrender.com/api/utilisateurs/connexion-utilisateur', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
