@@ -30,7 +30,7 @@ export default function AjouterProduit() {
     }
 
     try {
-      const response = await fetch('https://backendclothstore.onrender.com/api/produits/ajouter', {
+      const response = await fetch('https://backend-store-loy5.onrender.com/api/produits/ajouter', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
