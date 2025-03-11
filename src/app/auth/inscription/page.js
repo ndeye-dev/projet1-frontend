@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation';
 export default function Inscription() {
   const router = useRouter();
 
-  // États du formulaire
   const [formData, setFormData] = useState({
     nom: '',
     prenom: '',
@@ -16,12 +15,10 @@ export default function Inscription() {
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
 
-  // Fonction pour mettre à jour les champs du formulaire
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Fonction de soumission du formulaire
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -39,9 +36,9 @@ export default function Inscription() {
       const data = await response.json();
 
       if (response.ok) {
-        localStorage.setItem('token', data.token); // Stocker le token
+        localStorage.setItem('token', data.token);
         setMessage('Inscription réussie ! Redirection...');
-        setTimeout(() => router.push('/auth/connexion'), 1000); // Redirection
+        setTimeout(() => router.push('/auth/connexion'), 1000);
       } else {
         setMessage(data.message || 'Échec de l\'inscription.');
       }
@@ -61,7 +58,6 @@ export default function Inscription() {
         {message && <p className="text-center text-red-500">{message}</p>}
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Champ Nom */}
           <div>
             <label htmlFor="nom" className="block text-sm font-medium">Nom</label>
             <input
@@ -75,7 +71,6 @@ export default function Inscription() {
             />
           </div>
 
-          {/* Champ Prénom */}
           <div>
             <label htmlFor="prenom" className="block text-sm font-medium">Prénom</label>
             <input
@@ -89,7 +84,6 @@ export default function Inscription() {
             />
           </div>
 
-          {/* Champ Email */}
           <div>
             <label htmlFor="email" className="block text-sm font-medium">Email</label>
             <input

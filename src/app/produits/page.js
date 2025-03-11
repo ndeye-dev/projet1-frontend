@@ -24,14 +24,13 @@ export default function ProduitsPage() {
             .catch(error => console.error("Erreur lors du chargement des produits :", error));
     }, []);
 
-    // Filtrer les produits par catégorie et recherche
     const produitsFiltres = produits.filter(produit =>
         (filtreCategorie === "" || produit.category === filtreCategorie) &&
         produit.title.toLowerCase().includes(search.toLowerCase())
     );
 
     return (
-        <div className=" bg-gray-200">
+        <div className=" bg-gray-100">
             <div>
                 <Nav/>
             </div>
@@ -41,24 +40,20 @@ export default function ProduitsPage() {
                     <Sidebar />
                 </div>
 
-                {/* Contenu principal */}
                 <div className="w-full md:w-3/4 lg:w-4/5 p-6">
                     <h1 className="text-2xl font-bold mb-6 ">🛍️ Produits</h1>
 
-                    {/* Barre de recherche et filtres */}
                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
-                        {/* Champ de recherche */}
                         <input
-                            className="border border-gray-300 rounded-md px-4 py-2 w-full md:w-1/3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="border border-gray-300 bg-gray-300 rounded-md px-4 py-2 w-full md:w-1/3 focus:outline-none focus:ring-2 focus:ring-blue-500"
                             placeholder="🔍 Rechercher un produit..."
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
                         />
 
-                        {/* Filtres par catégorie */}
                         <div className="flex gap-3 flex-wrap">
                             <button
-                                className={`px-4 py-2 rounded-md ${filtreCategorie === "" ? "bg-gray-300 text-white" : "bg-gray-200"}`}
+                                className={`border border-gray-300 px-3 py-2 rounded-md ${filtreCategorie === "" ? " bg-gray-200" : "border border-gray-300"}`}
                                 onClick={() => setFiltreCategorie("")}
                             >
                                 Tous
@@ -66,7 +61,7 @@ export default function ProduitsPage() {
                             {categories.map((cat, index) => (
                                 <button
                                     key={index}
-                                    className={`px-4 py-2 rounded-md ${filtreCategorie === cat ? "bg-gray-600 text-white" : "bg-gray-200"}`}
+                                    className={`px-4 py-2 rounded-md ${filtreCategorie === cat ? " bg-gray-200" : "border border-gray-300"}`}
                                     onClick={() => setFiltreCategorie(cat)}
                                 >
                                     {cat}
@@ -75,7 +70,6 @@ export default function ProduitsPage() {
                         </div>
                     </div>
 
-                    {/* Liste des produits */}
                     {produitsFiltres.length === 0 ? (
                         <p className="text-center text-gray-500">Aucun produit trouvé.</p>
                     ) : (
@@ -84,7 +78,7 @@ export default function ProduitsPage() {
                                 <Link
                                     key={produit.id}
                                     href={`/produits/${produit.id}`}
-                                    className="border  p-4 bg-gray-200 shadow-md hover:shadow-xl transition-transform transform hover:-translate-y-1"
+                                    className="border  p-4 bg-gray-100 shadow-md hover:shadow-xl transition-transform transform hover:-translate-y-1"
                                 >
                                     <Image
                                         src={produit.image}

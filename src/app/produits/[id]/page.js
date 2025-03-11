@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import axios from "axios";
 import Link from "next/link";
 import Image from "next/image";
+import Nav from "@/app/components/Nav";
 // import Nav from "@/app/components/Nav";
 
 export default function ProduitDetail({ params }) {
@@ -15,11 +16,11 @@ export default function ProduitDetail({ params }) {
     const [ajoute, setAjoute] = useState(false); // État pour indiquer si le produit est ajouté
 
     const couleurs = {
-        Red: "bg-red-500",
-        Blue: "bg-blue-500",
-        Green: "bg-green-500",
-        Yellow: "bg-yellow-500",
-        Black: "bg-black"
+        Red: "bg-gray-300",
+        Blue: "bg-black",
+        Green: "bg-gray-500",
+        Yellow: "bg-blue-200",
+        Black: "bg-gray-200"
     };
     useEffect(() => {
         if (!id) return notFound();
@@ -71,13 +72,15 @@ export default function ProduitDetail({ params }) {
 
     return (
         <main className="p-8 max-w-screen-xl mx-auto">
-
-            <Link href="/produits" className="text-gray-500 font-semibold hover:underline">
+            <Nav />
+            <div className="mt-10 p-6">
+            <Link href="/produits" className="text-gray-500 font-semibold hover:underline mt-10">
                 ← Retour
             </Link>
+            </div>
             <div className="mt-6 flex flex-col md:flex-row gap-8 md:gap-12  justify-center items-stretch">
                 {/* Image produit */}
-                <div className="border  shadow-lg p-4 bg-gray-300 flex justify-center items-center max-w-xs h-auto">
+                <div className="border bg-gray-100  shadow-lg p-4 flex justify-center items-center max-w-xs h-auto">
                     <Image
                         src={produit.image}
                         alt={produit.title}
@@ -88,14 +91,13 @@ export default function ProduitDetail({ params }) {
                 </div>
 
                 {/* Détails produit */}
+
                 <div className="border  shadow-lg p-6 relative bg-white flex flex-col justify-between max-w-xs h-auto">
-                     {/* Bouton Favoris */}
                      <button onClick={toggleFavori} className="self-end absolute top-0 end-0 text-2xl">
                         {favori ? "❤️" : "🤍"}
                     </button>
                     <h1 className="text-2xl font-bold text-gray-800">{produit.title}</h1>
                     <p className="text-xl text-gray-600 mt-2">${produit.price}</p>
-                    {/* <p className="mt-4 text-gray-700">{produit.description}</p> */}
                     <p className="mt-2 text-gray-500">Catégorie : {produit.category}</p>
                     <p className="mt-2 text-yellow-500">
                         ⭐ {produit.rating.rate} ({produit.rating.count} avis)

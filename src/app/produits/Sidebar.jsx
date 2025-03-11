@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { ChevronRight, ChevronDown, X } from "lucide-react";
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false); // Toggle pour le sidebar
@@ -14,7 +15,6 @@ export default function Sidebar() {
     rating: false,
   });
 
-  // Toggle d'expansion pour chaque section
   const toggleExpansion = (section) => {
     setExpanded((prev) => ({
       ...prev,
@@ -24,12 +24,11 @@ export default function Sidebar() {
 
   return (
     <div className="">
-      {/* Bouton de toggle pour ouvrir/fermer le sidebar */}
       <button
-        className="md:hidden text-2xl text-blue-500 absolute top-28 left-4 z-20"
+        className="md:hidden text-2xl absolute top-28 left-4 z-20"
         onClick={() => setIsOpen(!isOpen)}
       >
-        {isOpen ? "⏹️" : "➡️"}
+        {isOpen ? <X size={24} /> : <ChevronRight size={24} />}
       </button>
 
       {/* Sidebar coulissant */}
@@ -42,10 +41,10 @@ export default function Sidebar() {
           <h1 className="text-xl font-semibold">Filtres</h1>
           {/* Bouton de toggle visible uniquement en mobile */}
           <button
-            className="md:hidden text-xl text-blue-500"
+            className="md:hidden text-xl "
             onClick={() => setIsOpen(!isOpen)}
           >
-            {isOpen ? "⏹️" : "➡️"}
+            {isOpen ? <ChevronDown size={20} /> : <ChevronRight size={20} />}
           </button>
         </div>
 
@@ -53,8 +52,8 @@ export default function Sidebar() {
         <div className="mb-6">
           <div className="flex justify-between items-center">
             <h2 className="font-medium text-lg mb-2">Taille</h2>
-            <button onClick={() => toggleExpansion("size")} className="text-blue-500">
-              {expanded.size ? "▼" : "▶️"}
+            <button onClick={() => toggleExpansion("size")} className="">
+              {expanded.size ?<ChevronDown size={20} /> : <ChevronRight size={20} />}
             </button>
           </div>
           {expanded.size && (
@@ -75,18 +74,18 @@ export default function Sidebar() {
         <div className="mb-6">
           <div className="flex justify-between items-center">
             <h2 className="font-medium text-lg mb-2">Disponibilité</h2>
-            <button onClick={() => toggleExpansion("availability")} className="text-blue-500">
-              {expanded.availability ? "▼" : "▶️"}
+            <button onClick={() => toggleExpansion("availability")} className="">
+              {expanded.availability ? <ChevronDown size={20} /> : <ChevronRight size={20} />}
             </button>
           </div>
           {expanded.availability && (
             <div className="flex flex-col gap-2">
               <label className="cursor-pointer flex items-center gap-2">
-                <input type="checkbox" className="form-checkbox text-blue-500" />
+                <input type="checkbox" className="form-checkbox " />
                 En stock
               </label>
               <label className="cursor-pointer flex items-center gap-2">
-                <input type="checkbox" className="form-checkbox text-blue-500" />
+                <input type="checkbox" className="form-checkbox " />
                 Épuisé
               </label>
             </div>
@@ -97,14 +96,14 @@ export default function Sidebar() {
         <div className="mb-6">
           <div className="flex justify-between items-center">
             <h2 className="font-medium text-lg mb-2">Catégories</h2>
-            <button onClick={() => toggleExpansion("categories")} className="text-blue-500">
-              {expanded.categories ? "▼" : "▶️"}
+            <button onClick={() => toggleExpansion("categories")} className="">
+              {expanded.categories ? <ChevronDown size={20} /> : <ChevronRight size={20} />}
             </button>
           </div>
           {expanded.categories && (
             <ul className="space-y-2">
               {['T-shirts', 'Pantalons', 'Chaussures', 'Accessoires'].map((cat, index) => (
-                <li key={index} className="cursor-pointer hover:text-blue-500 transition-all">
+                <li key={index} className="cursor-pointer hover: transition-all">
                   {cat}
                 </li>
               ))}
@@ -116,8 +115,8 @@ export default function Sidebar() {
         <div className="mb-6">
           <div className="flex justify-between items-center">
             <h2 className="font-medium text-lg mb-2">Couleur</h2>
-            <button onClick={() => toggleExpansion("color")} className="text-blue-500">
-              {expanded.color ? "▼" : "▶️"}
+            <button onClick={() => toggleExpansion("color")} className="">
+              {expanded.color ? <ChevronDown size={20} /> : <ChevronRight size={20} />}
             </button>
           </div>
           {expanded.color && (
@@ -136,8 +135,8 @@ export default function Sidebar() {
         <div className="mb-6">
           <div className="flex justify-between items-center">
             <h2 className="font-medium text-lg mb-2">Plage de prix</h2>
-            <button onClick={() => toggleExpansion("price")} className="text-blue-500">
-              {expanded.price ? "▼" : "▶️"}
+            <button onClick={() => toggleExpansion("price")} className="">
+              {expanded.price ? <ChevronDown size={20} /> : <ChevronRight size={20} />}
             </button>
           </div>
           {expanded.price && (
@@ -161,14 +160,14 @@ export default function Sidebar() {
         <div className="mb-6">
           <div className="flex justify-between items-center">
             <h2 className="font-medium text-lg mb-2">Collections</h2>
-            <button onClick={() => toggleExpansion("collection")} className="text-blue-500">
-              {expanded.collection ? "▼" : "▶️"}
+            <button onClick={() => toggleExpansion("collection")} className="">
+              {expanded.collection ? <ChevronDown size={20} /> : <ChevronRight size={20} />}
             </button>
           </div>
           {expanded.collection && (
             <ul className="space-y-2">
               {['Été', 'Hiver', 'Nouveautés'].map((collection, index) => (
-                <li key={index} className="cursor-pointer hover:text-blue-500 transition-all">
+                <li key={index} className="cursor-pointer hover: transition-all">
                   {collection}
                 </li>
               ))}
@@ -180,8 +179,8 @@ export default function Sidebar() {
         <div className="mb-6">
           <div className="flex justify-between items-center">
             <h2 className="font-medium text-lg mb-2">Tags</h2>
-            <button onClick={() => toggleExpansion("tags")} className="text-blue-500">
-              {expanded.tags ? "▼" : "▶️"}
+            <button onClick={() => toggleExpansion("tags")} className="">
+              {expanded.tags ? <ChevronDown size={20} /> : <ChevronRight size={20} />}
             </button>
           </div>
           {expanded.tags && (
@@ -202,8 +201,8 @@ export default function Sidebar() {
         <div className="mb-6">
           <div className="flex justify-between items-center">
             <h2 className="font-medium text-lg mb-2">Évaluation</h2>
-            <button onClick={() => toggleExpansion("rating")} className="text-blue-500">
-              {expanded.rating ? "▼" : "▶️"}
+            <button onClick={() => toggleExpansion("rating")} className="">
+              {expanded.rating ? <ChevronDown size={20} /> : <ChevronRight size={20} />}
             </button>
           </div>
           {expanded.rating && (

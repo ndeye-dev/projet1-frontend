@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import Cookies from 'js-cookie'; // Importez js-cookie
+import Cookies from 'js-cookie';
 
 export default function Connexion() {
   const router = useRouter();
@@ -15,7 +15,6 @@ export default function Connexion() {
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
 
-  // Fonction pour mettre à jour les champs du formulaire
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -38,14 +37,12 @@ export default function Connexion() {
       const data = await response.json();
 
       if (response.ok) {
-        // Stocker le token dans le localStorage
         localStorage.setItem('token', data.token);
 
-        // Stocker le token dans le cookie
-        Cookies.set('token', data.token, { expires: 7, path: '/' }); // Le token est valide pendant 7 jours
+        Cookies.set('token', data.token, { expires: 7, path: '/' });
 
         setMessage('Connexion réussie !');
-        setTimeout(() => router.push('/produits'), 1000); // Redirection vers /produits
+        setTimeout(() => router.push('/produits'), 1000); 
       } else {
         setMessage(data.message || 'Échec de la connexion.');
       }
@@ -80,7 +77,6 @@ export default function Connexion() {
             />
           </div>
 
-          {/* Champ Mot de passe */}
           <div>
             <label htmlFor="motDePasse" className="block text-sm font-medium">Mot de passe</label>
             <input
@@ -94,7 +90,6 @@ export default function Connexion() {
             />
           </div>
 
-          {/* Bouton de connexion */}
           <button
             type="submit"
             className="w-full bg-gray-500 text-white py-2 px-4 rounded-md hover:bg-gray-600 disabled:opacity-50"
@@ -104,7 +99,6 @@ export default function Connexion() {
           </button>
         </form>
 
-        {/* Lien vers l'inscription */}
         <p className="mt-4 text-center text-sm">
           Pas encore de compte ? <a href="/auth/inscription" className="text-blue-500 hover:underline">Inscrivez-vous</a>
         </p>
