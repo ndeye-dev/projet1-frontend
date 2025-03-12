@@ -24,7 +24,7 @@ export default function FavorisPage() {
     return (
         <main className="p-8 max-w-screen-xl mx-auto">
             <Nav/>
-            <h1 className="text-2xl mt-14 font-bold mb-6">⭐ Produits Favoris</h1>
+            <h1 className="text-2xl mt-14 font-bold mb-6">Produits Favoris</h1>
 
             {favoris.length === 0 ? (
                 <p className="text-gray-500">Aucun produit en favori.</p>

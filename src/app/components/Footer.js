@@ -5,7 +5,7 @@ import framer from '../../img/Frame275.png'
 
 export default function Footer() {
   return (
-    <div className='bg-gray-300 flex flex-wrap justify-around  mt-20 p-16'>
+    <div className='bg-gray-200 flex flex-wrap justify-around  mt-20 p-16'>
         <div className=''> 
             <div className='text-gray-500 text-sm'>
              <div className='mb-10'>info</div>
