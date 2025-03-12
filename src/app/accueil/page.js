@@ -35,7 +35,7 @@ export default function Home() {
 
     return (
 
-        <div className="bg-gray-100 bg-opacity-40">
+        <div className="bg-gray-50 bg-opacity-40">
             <Nav />
             <div className="text-sm space-y-1 mt-16 max-w-7xl mx-auto  p-6">
                 <div>NEW</div>
@@ -50,11 +50,11 @@ export default function Home() {
                         <h2 className="text-5xl font-bold text-gray-900 mb-4">
                             New <br /> <span className="">Collection</span>
                         </h2>
-                        <div className="mb-6 space-x-4">
+                        <div className="mb-4 space-x-4">
                             <p className="text-lg text-gray-600">Summer</p>
                             <p className="text-lg text-gray-600">2024</p>
                         </div>
-                        <div className="flex items-center mt-12 md:mt-60  space-x-4">
+                        <div className="flex items-center mt-7 md:mt-60  space-x-4">
                             <button className="flex items-center w-50 gap-3 px-6 py-2 bg-gray-200 hover:bg-gray-300 border  transition duration-200 ease-in-out">
                                 <span className="text-sm">Go To Shop</span>
                                 <FiArrowRight className=" h-5 text-gray-800" />

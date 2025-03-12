@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
+import { ArrowLeft } from "lucide-react";
 
 export default function PanierPage() {
   const router = useRouter();
@@ -62,18 +63,25 @@ export default function PanierPage() {
   const total = panier.reduce((acc, produit) => acc + produit.price * produit.quantite, 0);
 
   return (
-    <main className="p-0 md:p-8 flex flex-col bg-gray-100 justify-center items-center max-w-screen-xl mx-auto">
-      <Link href="/produits" className="text-gray-500 font-semibold hover:underline self-start">← Retour</Link>
+    <main className="p-0 md:p-8  bg-gray-50 justify-center items-center max-w-screen-xl mx-auto">
+      <Link href="/produits" className=" font-semibold hover:underline self-start"> <ArrowLeft size={24} color="black" width={50}/> </Link>
+      <div className="mt-5">
+        <h2 className="text-3xl font-bold m-3">CHECKOUT</h2>
+        <div className="flex  gap-5 m-3 text-gray-400">
+          <p className="font-bold text-black">INFORMATION</p>
+          <p>SHIPPING</p>
+          <p>PAYMENT</p>
 
-      <div className="w-full flex flex-col md:flex-row p-8 justify-between space-x-8 gap-8">
-        {/* Formulaire Client */}
+        </div>
+      </div>
+      <div className="w-full flex flex-col md:flex-row p-5 justify-between space-x-8 gap-8">
         <div className="w-xs md:w-lg">
           {erreur && <p className="text-red-500 text-center">{erreur}</p>}
           <form onSubmit={handleSubmit} className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
-            <h2 className="text-lg font-semibold">📋 Contact Infos</h2>
+            <h2 className="text-lg font-semibold"> CONTACT INFO</h2>
             <input type="email" name="email" placeholder="Email" onChange={handleChange} className="border p-2 col md:col-span-2" required />
             <input type="tel" name="telephone" placeholder="Téléphone" onChange={handleChange} className="border p-2 col md:col-span-2" required />
-            <h2 className="text-lg font-semibold">📋 Shipping Adresse</h2> <br/>
+            <h2 className="text-lg font-semibold"> SHIPPING ADDRESS</h2> <br/>
             <input type="text" name="nom" placeholder="Nom" onChange={handleChange} className="border p-2" required />
             <input type="text" name="prenom" placeholder="Prénom" onChange={handleChange} className="border p-2" required />
             <input type="text" name="continent" placeholder="Continent" onChange={handleChange} className="border p-2 col md:col-span-2" required />
@@ -83,7 +91,7 @@ export default function PanierPage() {
             <input type="text" name="postalCode" placeholder="Code Postal" onChange={handleChange} className="border  p-2" required />
 
             <button type="submit" className="col md:col-span-2 mt-4 px-4 py-2 bg-gray-600 text-white rounded">
-              Passer au paiement 💳
+             Shipping
             </button>
           </form>
         </div>

@@ -6,8 +6,12 @@ import Link from "next/link";
 import Sidebar from "./Sidebar";
 import Nav from "../components/Nav";
 import Image from "next/image";
+import styled from "styled-components";
 
-
+const StyledText = styled.p`
+  font-family: 'Beatrice Deck Trial', sans-serif;
+  
+`;
 export default function ProduitsPage() {
     const [produits, setProduits] = useState([]);
     const [categories, setCategories] = useState([]);
@@ -30,18 +34,23 @@ export default function ProduitsPage() {
     );
 
     return (
-        <div className=" bg-gray-100">
+        
+        <div className=" bg-gray-50">
+            <StyledText>
             <div>
                 <Nav/>
             </div>
-            <div className="flex flex-wrap md:flex-nowrap mt-16  ">
-                {/* Sidebar */}
+            <div className="font-beatrice flex flex-wrap md:flex-nowrap mt-16 p-3 ">
                 <div className="w-full md:w-1/4 lg:w-1/5 p-6  ">
                     <Sidebar />
                 </div>
 
                 <div className="w-full md:w-3/4 lg:w-4/5 p-6">
-                    <h1 className="text-2xl font-bold mb-6 ">🛍️ Produits</h1>
+                    <div className="flex gap-3">
+                        <Link href="/accueil"><p className="">Home /</p></Link>
+                        <Link href="/produits"><p className="font-bold">Products</p></Link>
+                    </div>
+                    <h1 className="text-2xl font-bold mb-6 "> Produits</h1>
 
                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
                         <input
@@ -95,6 +104,7 @@ export default function ProduitsPage() {
                     )}
                 </div>
             </div>
+            </StyledText>
         </div>
 
     );
