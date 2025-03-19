@@ -63,7 +63,8 @@ export default function PanierPage() {
   const total = panier.reduce((acc, produit) => acc + produit.price * produit.quantite, 0);
 
   return (
-    <main className="p-0 md:p-8  bg-gray-50 justify-center items-center max-w-screen-xl mx-auto">
+    <div className="bg-gray-50 ">
+    <main className="p-0 md:p-8  justify-center items-center max-w-screen-xl mx-auto">
       <Link href="/produits" className=" font-semibold hover:underline self-start"> <ArrowLeft size={24} color="black" width={50}/> </Link>
       <div className="mt-5">
         <h2 className="text-3xl font-bold m-3">CHECKOUT</h2>
@@ -118,5 +119,6 @@ export default function PanierPage() {
         </div>
       </div>
     </main>
+    </div>
   );
 }

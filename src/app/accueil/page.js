@@ -5,6 +5,15 @@ import { useState, useEffect } from "react";
 import Link from 'next/link';
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
+import Image from "next/image";
+import Img12 from "../../img/m12.jpeg"
+import Img11 from "../../img/m11.jpeg"
+import Img5 from "../../img/m5.jpeg"
+import Img4 from "../../img/m4.jpeg"
+import Img13 from "../../img/m13.jpeg"
+import Img3 from "../../img/m3.jpeg"
+
+
 
 // Conteneur principal
 export default function Home() {
@@ -45,19 +54,20 @@ export default function Home() {
             </div>
             <div className="max-w-7xl mx-auto  p-6">
 
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-                    <div>
-                        <h2 className="text-5xl font-bold text-gray-900 mb-4">
-                            New <br /> <span className="">Collection</span>
+                    <div className="flex flex-col justify-between">
+                        <h2 className="text-5xl font-bold text-gray-900 ">
+                            New <br /> <span>Collection</span>
                         </h2>
-                        <div className="mb-4 space-x-4">
+                        <div className=" space-x-4">
                             <p className="text-lg text-gray-600">Summer</p>
                             <p className="text-lg text-gray-600">2024</p>
                         </div>
-                        <div className="flex items-center mt-7 md:mt-60  space-x-4">
-                            <button className="flex items-center w-50 gap-3 px-6 py-2 bg-gray-200 hover:bg-gray-300 border  transition duration-200 ease-in-out">
+                        <div className="flex items-center space-x-4 mt-7 md:mt-20">
+                            <button className="flex items-center gap-3 px-6 py-2 bg-gray-200 hover:bg-gray-300 border transition duration-200 ease-in-out">
                                 <span className="text-sm">Go To Shop</span>
-                                <FiArrowRight className=" h-5 text-gray-800" />
+                                <FiArrowRight className="h-5 text-gray-800" />
                             </button>
                             <div className="flex space-x-2">
                                 <button onClick={prevSlide} className="p-2 bg-gray-300 hover:bg-gray-400 border transition">
@@ -70,15 +80,17 @@ export default function Home() {
                         </div>
                     </div>
 
-                    {produits.slice(0, 2).map((produit) => (
-                        <Link key={produit.id} href="/produits" className="bg-gray-100 w-72  shadow-lg  overflow-hidden">
-                            <img src={produit.image} alt={produit.title} className="w-full  object-cover" />
-                            <div className="p-4">
-
-                            </div>
+                    {/* Images */}
+                    <div className="flex gap-4 col-span-2 ">
+                        <Link href="/produits" className="w-1/2">
+                            <Image src={Img12} alt="Produit 12" className="w-full h-96 object-cover rounded-lg shadow-md" />
                         </Link>
-                    ))}
+                        <Link href="/produits" className="w-1/2">
+                            <Image src={Img11} alt="Produit 11" className="w-full h-96 object-cover rounded-lg shadow-md" />
+                        </Link>
+                    </div>
                 </div>
+
 
                 <div className=" mt-40 ">
                     <h2 className="text-5xl font-bold text-gray-900 mb-4">
@@ -143,11 +155,18 @@ export default function Home() {
                     </p>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {produits.slice(0, 4).map((produit) => (
-                            <Link key={produit.id} href="/produits" className="bg-gray-100 shadow-lgoverflow-hidden">
-                                <img src={produit.image} alt={produit.title} className="w-full h-72 object-cover" />
+                            <Link  href="/produits" className="mb-10">
+                            <Image src={Img5} className="w-full h-96 object-cover rounded-lg shadow-md" />
                             </Link>
-                        ))}
+                            <Link  href="/produits" className="mt-10">
+                            <Image src={Img4} className="w-full h-96 object-cover rounded-lg shadow-md" />
+                            </Link>
+                            <Link  href="/produits" className="">
+                            <Image src={Img13} className="w-full h-96 object-cover rounded-lg shadow-md" />
+                            </Link>
+                            <Link  href="/produits" className="mt-10">
+                            <Image src={Img3} className="w-full h-96 object-cover rounded-lg shadow-md" />
+                            </Link>
                     </div>
                 </div>
             </div>

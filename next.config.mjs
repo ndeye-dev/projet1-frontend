@@ -8,8 +8,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-      domains: ['fakestoreapi.com'], 
-    },
+      domains: ["localhost", "encrypted-tbn0.gstatic.com"],     },
   };
   
   export default nextConfig;

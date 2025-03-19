@@ -71,7 +71,7 @@ export default function Profil() {
       }
 
       try {
-        const response = await fetch('https://backendclothstore.onrender.com/api/utilisateurs/profil', {
+        const response = await fetch('http://localhost:5000/api/utilisateurs/profil', {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${token}`,
