@@ -136,7 +136,7 @@ export default function FavorisPage() {
 
                             {/* Infos */}
                             <h2 className="mt-2 text-lg font-semibold">{produit.title}</h2>
-                            <p className="text-gray-600">${produit.price}</p>
+                            <p className="text-gray-600">{produit.price} F</p>
 
                             {/* Actions */}
                             <div className="mt-4 flex justify-between">

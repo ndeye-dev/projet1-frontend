@@ -128,7 +128,7 @@ export default function Home() {
                                 <p className="font-semibold text-gray-800">Sorts (-)</p>
                                 <p className="text-gray-400">Less to More</p>
                                 <p className="text-gray-400">More to Less</p>
-                            </div>
+                            </div>099
                         </div>
                     </div>
 

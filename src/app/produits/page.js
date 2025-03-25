@@ -40,9 +40,9 @@ export default function ProduitsPage() {
     const produitsFiltres = produits.filter(produit =>
         (filtreCategorie === "" || produit.category === filtreCategorie) &&
         produit.name.toLowerCase().includes(search.toLowerCase())
-        
+
     );
-//
+    //
     return (
         <div className="bg-gray-50">
             <StyledContainer>
@@ -104,27 +104,31 @@ export default function ProduitsPage() {
                         ) : produitsFiltres.length === 0 ? (
                             <p className="text-center text-gray-500">Aucun produit trouvé.</p>
                         ) : (
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                                
+                          
+                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                                 {produitsFiltres.map((produit, index) => (
-                                    <Link key={produit.id || index} href={`/produits/${produit.id}`}>
-
+                                    <Link
+                                        key={produit._id || index}
+                                        href={`/produits/${produit._id}`}
+                                        className="block bg-white shadow-lg rounded-lg p-4 transition-transform transform hover:scale-105"
+                                    >
                                         <Image
-                                            src={produit.image || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQg4Rd4av_-XfjMqub99N_c6rJGJLYAzQDXQQ&s"}
-                                            alt={produit.name || "Image de produit"} 
+                                            src={produit.image || "https://via.placeholder.com/500"}
+                                            alt={produit.name ? `Image de ${produit.name}` : "Image de produit"}
                                             width={500}
                                             height={500}
-                                            className="w-full h-40 object-contain mb-3"
+                                            className="w-full h-40 object-cover mb-3 rounded-md"
+                                            unoptimized
                                         />
-                                        
-                                        <h2 className="text-gray-700 font-semibold">{produit.name}</h2>
-                                       <div className="flex justify-between">
-                                       <h2 className="text-gray-700 font-semib old">{produit.description}</h2>
-                                       <p className="font-bold">{produit.price} fcfa</p>
-                                       </div>
+                                        <h2 className="text-gray-500 font-semibold">{produit.name}</h2>
+                                        <div className="flex justify-between items-center mt-2">
+                                            <h2 className="text-gray-700 font-semibold">{produit.description}</h2>
+                                            <p className="text-gray-700 font-bold">{produit.price} FCFA</p>
+                                        </div>
                                     </Link>
                                 ))}
                             </div>
+
                         )}
                     </div>
                 </div>
@@ -132,4 +136,4 @@ export default function ProduitsPage() {
         </div>
     );
 }
- 
+

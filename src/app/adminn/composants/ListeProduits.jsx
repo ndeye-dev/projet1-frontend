@@ -53,10 +53,6 @@ const Button = styled.button`
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
-  transition: background-color 0.3s;
-
-  &:hover {
-    background-color: #2980b9;
   }
 `;
 
@@ -116,7 +112,7 @@ const ListProduit = () => {
           <ProductInfo>
             <h3>{product.name}</h3>
             <p>{product.description}</p>
-            <p><strong>Prix:</strong> {product.price} F</p>
+            <p><strong>Prix:</strong> {product.price} Fcfa</p>
             <p><strong>Stock:</strong> {product.stock}</p>
           </ProductInfo>
           {product.image ? (

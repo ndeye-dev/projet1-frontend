@@ -56,7 +56,7 @@ export default function PaiementPage() {
               <div key={produit.id} className="p-4 shadow-md rounded-lg flex flex-col items-center">
                 <Image src={produit.image} alt={produit.title} width={150} height={150} className="w-32 h-32 object-contain mb-4" />
                 <h3 className="font-semibold text-center text-lg">{produit.title}</h3>
-                <p className="text-gray-600 mb-4">${produit.price.toFixed(2)}</p>
+                <p className="text-gray-600 mb-4">{produit.price.toFixed(2)} F</p>
 
                 {/* Quantité */}
                 <div className="flex items-center gap-3 mb-4">
@@ -85,7 +85,7 @@ export default function PaiementPage() {
 
         <div className="shadow-md p-10 rounded-lg flex flex-col items-center">
           <h2 className="text-2xl font-bold mb-10">Total à payer</h2>
-          <p className="text-2xl font-semibold mb-6">${total.toFixed(2)}</p>
+          <p className="text-2xl font-semibold mb-6">{total.toFixed(2)} F</p>
           <button className="w-48 px-3 py-2 bg-gray-400 text-white text-lg font-semibold rounded-lg">
             Payer
           </button>

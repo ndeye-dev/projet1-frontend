@@ -1,9 +1,9 @@
-
 "use client";
 
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import Cookies from "js-cookie";
+import { useRouter } from "next/navigation"; // Import pour la redirection
 
 const Container = styled.div`
   width: 100%;
@@ -83,13 +83,17 @@ const Button = styled.button`
   }
 `;
 
+const ErrorMessage = styled.div`
+  color: red;
+  font-size: 16px;
+  margin-top: 20px;
+`;
 const ProfilAdmin = () => {
-  const [adminData, setAdminData] = useState(null);  // Initialise adminData avec `null`
+  const [adminData, setAdminData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  
+  const router = useRouter(); 
   useEffect(() => {
-    // Récupérer le token depuis les cookies (ou localStorage)
     const token = Cookies.get("token");
 
     if (!token) {
@@ -97,26 +101,31 @@ const ProfilAdmin = () => {
       setLoading(false);
       return;
     }
-
-    // Récupérer le profil de l'administrateur depuis l'API
     const fetchAdminProfile = async () => {
       try {
         const response = await fetch("http://localhost:5000/api/utilisateurs/profil", {
           method: "GET",
           headers: {
-            "Authorization": `Bearer ${token}`,
+            Authorization: `Bearer ${token}`,
           },
         });
-
         if (!response.ok) {
           throw new Error("Erreur lors de la récupération du profil.");
         }
 
         const data = await response.json();
+
+        // Vérifier si l'utilisateur est bien un admin
+        if (data.role !== "admin") {
+          setError("Accès refusé. Vous n'êtes pas administrateur.");
+          setLoading(false);
+          return;
+        }
+
         setAdminData(data);
-        setLoading(false);
       } catch (err) {
         setError(err.message);
+      } finally {
         setLoading(false);
       }
     };
@@ -125,9 +134,16 @@ const ProfilAdmin = () => {
   }, []);
 
   if (loading) return <div>Chargement...</div>;
-  if (error) return <div>{error}</div>;
 
-  if (!adminData) return <div>Profil non trouvé.</div>;
+  if (error) {
+    return (
+      <Container>
+        <ErrorMessage>{error}</ErrorMessage>
+      </Container>
+    );
+  }
+
+  if (!adminData) return <Container><ErrorMessage>Profil non trouvé.</ErrorMessage></Container>;
 
   const getInitials = (name) => {
     return name

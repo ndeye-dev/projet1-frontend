@@ -1,16 +1,10 @@
-
 "use client";
 import { useState } from "react";
 import styled from "styled-components";
 import ListeProduit from "./composants/ListeProduits";
 import AjoutProduit from "./composants/AjoutProduits";
 import ProfilAdmin from "./composants/ProfilAdmin";
-
-// const PageContainer = styled.div`
-//   display: flex;
-//   height: 100vh;
-// `;
-
+import {FiUser} from 'react-icons/fi'
 const Sidebar = styled.div`
   width: 250px;
   background: #2c3e50;
@@ -61,6 +55,12 @@ const Button = styled.button`
   }
 `;
 
+const ProfileContainer = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+`;
+
 const ProfileButton = styled.button`
   background: none;
   border: none;
@@ -68,13 +68,58 @@ const ProfileButton = styled.button`
   font-size: 16px;
   cursor: pointer;
   padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
   &:hover {
     background: rgba(255, 255, 255, 0.2);
   }
 `;
 
+const ProfileMenu = styled.div`
+  position: absolute;
+  top: 45px;
+  right: 0;
+  background: white;
+  color: black;
+  border-radius: 5px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+`;
+
+const ProfileMenuItem = styled.button`
+  background: none;
+  border: none;
+  color: black;
+  font-size: 14px;
+  padding: 10px;
+  text-align: left;
+  cursor: pointer;
+  width: 100%;
+  &:hover {
+    background: #f1f1f1;
+  }
+`;
+
+const LogoutButton = styled(ProfileMenuItem)`
+  &:hover {
+    background: #ffe6e6;
+  }
+`;
+
 const AdminPage = () => {
   const [selectedTab, setSelectedTab] = useState("liste");
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const handleLogout = () => {
+    document.cookie = "token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+    localStorage.removeItem("token");
+    window.location.href = "/auth/connexion";
+    console.log("Déconnexion...");
+  };
 
   return (
     <>
@@ -87,7 +132,19 @@ const AdminPage = () => {
 
       <Navbar>
         <h2>Tableau de Bord Admin</h2>
-        <ProfileButton onClick={() => setSelectedTab("profil")}>Mon Profil</ProfileButton>
+        <ProfileContainer>
+          <ProfileButton onClick={() => setMenuOpen(!menuOpen)}>
+             <FiUser size={24} />
+          </ProfileButton>
+          {menuOpen && (
+            <ProfileMenu>
+              <ProfileMenuItem onClick={() => setSelectedTab("profil")}>
+                Voir Profil
+              </ProfileMenuItem>
+              <LogoutButton onClick={handleLogout}>Déconnexion</LogoutButton>
+            </ProfileMenu>
+          )}
+        </ProfileContainer>
       </Navbar>
 
       <Content>
